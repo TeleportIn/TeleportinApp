@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.ConsoleMessage;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.NumberPicker;
@@ -63,6 +64,7 @@ public class ChatActivity extends ActionBarActivity implements WebServiceCoordin
 
         mPublisherViewContainer = (FrameLayout)findViewById(R.id.publisher_container);
         mSubscriberViewContainer = (FrameLayout)findViewById(R.id.subscriber_container);
+
     }
 
     View.OnClickListener camListener = new View.OnClickListener() {
@@ -72,6 +74,10 @@ public class ChatActivity extends ActionBarActivity implements WebServiceCoordin
     };
     View.OnClickListener startListener = new View.OnClickListener() {
         public void onClick(View v) {
+            if(mSession != null){
+                mSession.disconnect();
+
+            }
             // initialize WebServiceCoordinator and kick off request for necessary data
             mWebServiceCoordinator = new WebServiceCoordinator(cont, listen);
             mWebServiceCoordinator.fetchSessionConnectionData(channelPicker.getValue());
