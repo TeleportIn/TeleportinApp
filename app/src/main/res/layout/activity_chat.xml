@@ -13,7 +13,32 @@
         <FrameLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:id="@+id/subscriber_container"/>
+            android:id="@+id/subscriber_container">
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Switch Cam"
+                android:id="@+id/camSwitch"
+                android:layout_gravity="right|top"
+                android:clickable="true" />
+
+            <NumberPicker
+                android:layout_width="wrap_content"
+                android:layout_height="57dp"
+                android:id="@+id/channelPicker"
+                android:layout_gravity="center_horizontal|bottom" />
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Connect"
+                android:id="@+id/connect_btn"
+                android:layout_gravity="left|bottom" />
+
+        </FrameLayout>
 
 
         <FrameLayout

@@ -1,11 +1,15 @@
 package com.tokbox.android.demo.learningopentok;
 
+import android.content.Context;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.NumberPicker;
 
 import com.opentok.android.Session;
 import com.opentok.android.Stream;
@@ -33,19 +37,47 @@ public class ChatActivity extends ActionBarActivity implements WebServiceCoordin
 
     private FrameLayout mPublisherViewContainer;
     private FrameLayout mSubscriberViewContainer;
+    public NumberPicker channelPicker;
+    private WebServiceCoordinator.Listener listen;
+    private Context cont;
+
+    Button camButton;
+    Button startButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+        listen = this;
+        cont = this;
+
+        channelPicker = (NumberPicker)findViewById(R.id.channelPicker);
+        channelPicker.setMaxValue(3);
+        channelPicker.setMinValue(1);
+        channelPicker.setWrapSelectorWheel(false);
+
+        camButton = (Button)findViewById(R.id.camSwitch);
+        startButton = (Button)findViewById(R.id.connect_btn);
+        camButton.setOnClickListener(camListener);
+        startButton.setOnClickListener(startListener);
 
         mPublisherViewContainer = (FrameLayout)findViewById(R.id.publisher_container);
         mSubscriberViewContainer = (FrameLayout)findViewById(R.id.subscriber_container);
-
-        // initialize WebServiceCoordinator and kick off request for necessary data
-        mWebServiceCoordinator = new WebServiceCoordinator(this, this);
-        mWebServiceCoordinator.fetchSessionConnectionData();
     }
+
+    View.OnClickListener camListener = new View.OnClickListener() {
+        public void onClick(View v) {
+            mPublisher.cycleCamera();
+        }
+    };
+    View.OnClickListener startListener = new View.OnClickListener() {
+        public void onClick(View v) {
+            // initialize WebServiceCoordinator and kick off request for necessary data
+            mWebServiceCoordinator = new WebServiceCoordinator(cont, listen);
+            mWebServiceCoordinator.fetchSessionConnectionData(channelPicker.getValue());
+        }
+    };
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -82,6 +114,7 @@ public class ChatActivity extends ActionBarActivity implements WebServiceCoordin
                 BaseVideoRenderer.STYLE_VIDEO_FILL);
         mPublisherViewContainer.addView(mPublisher.getView());
     }
+
 
     private void logOpenTokError(OpentokError opentokError) {
         Log.e(LOG_TAG, "Error Domain: " + opentokError.getErrorDomain().name());

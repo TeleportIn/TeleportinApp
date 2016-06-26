@@ -2,6 +2,7 @@ package com.tokbox.android.demo.learningopentok;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.NumberPicker;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -16,7 +17,7 @@ import org.json.JSONObject;
 public class WebServiceCoordinator {
 
     private static final String CHAT_SERVER_URL = "https://teleportinopentok.herokuapp.com";
-    private static final String SESSION_INFO_ENDPOINT = "https://teleportinopentok.herokuapp.com/session";
+    private static final String SESSION_INFO_ENDPOINT = "http://teleportinserver.azurewebsites.net/api/session?channel=";
 
     private static final String LOG_TAG = WebServiceCoordinator.class.getSimpleName();
 
@@ -28,13 +29,13 @@ public class WebServiceCoordinator {
         this.delegate = delegate;
     }
 
-    public void fetchSessionConnectionData() {
+    public void fetchSessionConnectionData(int channel) {
         RequestQueue reqQueue = Volley.newRequestQueue(context);
-        reqQueue.add(new JsonObjectRequest(Request.Method.GET, SESSION_INFO_ENDPOINT, new Response.Listener<JSONObject>() {
+        reqQueue.add(new JsonObjectRequest(Request.Method.GET, SESSION_INFO_ENDPOINT + channel, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
-                    String apiKey = response.getString("apiKey");
+                    String apiKey = String.valueOf(response.getInt("apikey"));
                     String sessionId = response.getString("sessionId");
                     String token = response.getString("token");
 
