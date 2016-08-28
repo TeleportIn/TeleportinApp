@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "teleportinAPI", "teleportinAPI\teleportinAPI.csproj", "{01BF80CF-EB6E-4650-8F9F-3E36B1AD9AA7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{E8E7B67B-363B-4789-B06F-D22F1A72AFD6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{0FF5E370-61DF-4E25-A24D-2D1B0B28DFFD}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Scripts\Deploy-AzureResourceGroup.ps1 = PublishScripts\Scripts\Deploy-AzureResourceGroup.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{705C767B-414C-491D-B06E-BB134F2BAA89}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Templates\teleportinAPI.json = PublishScripts\Templates\teleportinAPI.json
+		PublishScripts\Templates\teleportinAPI.param.dev.json = PublishScripts\Templates\teleportinAPI.param.dev.json
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{01BF80CF-EB6E-4650-8F9F-3E36B1AD9AA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01BF80CF-EB6E-4650-8F9F-3E36B1AD9AA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01BF80CF-EB6E-4650-8F9F-3E36B1AD9AA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01BF80CF-EB6E-4650-8F9F-3E36B1AD9AA7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0FF5E370-61DF-4E25-A24D-2D1B0B28DFFD} = {E8E7B67B-363B-4789-B06F-D22F1A72AFD6}
+		{705C767B-414C-491D-B06E-BB134F2BAA89} = {E8E7B67B-363B-4789-B06F-D22F1A72AFD6}
+	EndGlobalSection
+EndGlobal
