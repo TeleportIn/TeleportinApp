@@ -57,7 +57,7 @@ namespace teleportinAPI.Controllers
         }
 
         [Authorize]
-        // POST: api/Session
+        // POST: api/Session/5
         public void Post([FromBody]SessionChannel chan)
         {
             int ApiKey = int.Parse(ConfigurationManager.AppSettings["API_KEY"]); // YOUR API KEY

@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>View</h2>
+
+<table>
+@foreach (var i in Model)
+{
+    <tr>
+        <td>@i.apiKey</td>
+        <td>@i.token</td>
+        <td>@i.sessionId</td>
+    </tr>
+}
+
+</table>
+
+
+@if (ViewBag.ErrorMessage == "AuthorizationRequired")
+{
+    <p>You have to sign-in to see your to do list. Click @Html.ActionLink("here", "Index", "Chat", new { reauth = true }, null) to sign-in.</p>
+
+}
+
+@if (ViewBag.ErrorMessage == "UnexpectedError")
+{
+    <p>An unexpected error occurred while retrieving your token. Please try again. You may need to sign-in.</p>
+}
