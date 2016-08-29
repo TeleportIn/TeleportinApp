@@ -17,6 +17,7 @@ using TestTeleportInClient.Models;
 
 namespace TestTeleportInClient.Controllers
 {
+    [Authorize]
     public class ChatController : Controller
     {
         private string POCApiResourceid = ConfigurationManager.AppSettings["apiResourceID"];
