@@ -17,7 +17,7 @@ import org.json.JSONObject;
 public class WebServiceCoordinator {
 
     private static final String CHAT_SERVER_URL = "https://teleportinopentok.herokuapp.com";
-    private static final String SESSION_INFO_ENDPOINT = "http://teleportinserver.azurewebsites.net/api/session?channel=";
+    private static final String SESSION_INFO_ENDPOINT = "http://teleportinserver2.azurewebsites.net/api/session?channel=";
 
     private static final String LOG_TAG = WebServiceCoordinator.class.getSimpleName();
 
@@ -57,7 +57,7 @@ public class WebServiceCoordinator {
         }));
     }
 
-    public static interface Listener {
+    public interface Listener {
         void onSessionConnectionDataReady(String apiKey, String sessionId, String token);
         void onWebServiceCoordinatorError(Exception error);
     }

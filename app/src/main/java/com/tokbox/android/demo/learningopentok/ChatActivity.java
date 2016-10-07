@@ -8,9 +8,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.ConsoleMessage;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.NumberPicker;
+import android.widget.Spinner;
 
 import com.opentok.android.Session;
 import com.opentok.android.Stream;
@@ -42,7 +45,7 @@ public class ChatActivity extends ActionBarActivity implements WebServiceCoordin
     private WebServiceCoordinator.Listener listen;
     private Context cont;
 
-    Button camButton;
+    ImageButton camButton;
     Button startButton;
 
     @Override
@@ -52,12 +55,13 @@ public class ChatActivity extends ActionBarActivity implements WebServiceCoordin
         listen = this;
         cont = this;
 
+
         channelPicker = (NumberPicker)findViewById(R.id.channelPicker);
-        channelPicker.setMaxValue(3);
+        channelPicker.setMaxValue(4);
         channelPicker.setMinValue(1);
         channelPicker.setWrapSelectorWheel(false);
 
-        camButton = (Button)findViewById(R.id.camSwitch);
+        camButton = (ImageButton)findViewById(R.id.camSwitch);
         startButton = (Button)findViewById(R.id.connect_btn);
         camButton.setOnClickListener(camListener);
         startButton.setOnClickListener(startListener);
@@ -74,10 +78,13 @@ public class ChatActivity extends ActionBarActivity implements WebServiceCoordin
     };
     View.OnClickListener startListener = new View.OnClickListener() {
         public void onClick(View v) {
+            if(mPublisher != null){
+                mSession.unpublish(mPublisher);
+            }
             if(mSession != null){
                 mSession.disconnect();
-
             }
+
             // initialize WebServiceCoordinator and kick off request for necessary data
             mWebServiceCoordinator = new WebServiceCoordinator(cont, listen);
             mWebServiceCoordinator.fetchSessionConnectionData(channelPicker.getValue());
@@ -157,6 +164,7 @@ public class ChatActivity extends ActionBarActivity implements WebServiceCoordin
 
     @Override
     public void onDisconnected(Session session) {
+        mPublisherViewContainer.removeAllViews();
         Log.i(LOG_TAG, "Session Disconnected");
     }
 

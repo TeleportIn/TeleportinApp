@@ -8,48 +8,53 @@
 
     <FrameLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        tools:ignore="UselessParent">
 
         <FrameLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="208dp"
+            android:layout_height="276dp"
             android:id="@+id/subscriber_container">
-
-            <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Switch Cam"
-                android:id="@+id/camSwitch"
-                android:layout_gravity="right|top"
-                android:clickable="true" />
-
-            <NumberPicker
-                android:layout_width="wrap_content"
-                android:layout_height="57dp"
-                android:id="@+id/channelPicker"
-                android:layout_gravity="center_horizontal|bottom" />
-
-            <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Connect"
-                android:id="@+id/connect_btn"
-                android:layout_gravity="left|bottom" />
 
         </FrameLayout>
 
 
         <FrameLayout
-            android:layout_width="@dimen/publisher_width"
-            android:layout_height="@dimen/publisher_height"
+            android:layout_width="192dp"
+            android:layout_height="271dp"
             android:id="@+id/publisher_container"
             android:layout_gravity="bottom|end"
             android:layout_marginBottom="@dimen/publisher_bottom_margin"
             android:layout_marginEnd="@dimen/publisher_right_margin"
             android:padding="@dimen/publisher_padding"
-            android:background="@color/publisher_border_color" />
+            android:background="@color/publisher_border_color" >
+
+        </FrameLayout>
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/connect"
+            android:id="@+id/connect_btn"
+            android:layout_gravity="start|bottom" />
+
+        <NumberPicker
+            android:layout_width="100dp"
+            android:layout_height="73dp"
+            android:id="@+id/channelPicker"
+            android:layout_gravity="center_horizontal|bottom"
+            android:orientation="horizontal" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="52dp"
+            android:src="@mipmap/reverse_cam"
+            android:id="@+id/camSwitch"
+            android:clickable="true"
+            android:layout_gravity="end|bottom"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/camera_flip" />
 
     </FrameLayout>
 

@@ -3,5 +3,6 @@
 
     <string name="app_name">TeleportIn</string>
     <string name="action_settings">Settings</string>
-
+    <string name="connect">Connect</string>
+    <string name="camera_flip">Camera Flip</string>
 </resources>

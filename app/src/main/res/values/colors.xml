@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="publisher_border_color">#FFFFFF</color>
+    <color name="drk_button">#00b015</color>
+    <color name="lgt_button">#00d919</color>
 </resources>
